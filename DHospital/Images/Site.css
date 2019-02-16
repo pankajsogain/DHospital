@@ -1,4 +1,4 @@
-﻿﻿body {
+﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -25,39 +25,35 @@ textarea {
 
 /*Bootstrap override*/
 .navbar-inverse {
-    background-color: #393 !important;
+    background-color:#393 !important;
     border-color: #080808;
 }
-
-    .navbar-inverse .navbar-nav > li > a:hover {
-        background-color: white;
-        color: #4CAF50 !important;
-        border-radius: 15px;
-    }
-
-    .navbar-inverse .navbar-nav > li > a {
-        color: whitesmoke !important;
-        font-weight: bold;
-        font-size: 19px;
-        font-family: "Segoe UI",Arial,sans-serif;
-    }
-
-    .navbar-inverse .navbar-brand {
-        color: white !important;
-        font-weight: bold;
-    }
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color:white;
+    color:#4CAF50 !important;
+    border-radius:15px;
+    
+}
+.navbar-inverse .navbar-nav > li > a {
+    color:whitesmoke !important;
+    font-weight:bold;
+    font-size:19px;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+.navbar-inverse .navbar-brand {
+    color:#4CAF50 !important;
+    font-weight:bold;
+}
 
 .nav-tabs > li > a {
     color: #4CAF50 !important;
     margin-right: 2px;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight:bold;
+   font-size:16px;
 }
-
 .nav-tabs {
-    border-bottom: none;
+  border-bottom: none;
 }
-
 .navbar {
     position: relative;
     z-index: 1000;
@@ -66,7 +62,4 @@ textarea {
     border: none;
 }
 
-.img-responsive {
-    width: 80px;
-    height: 80px;
-}
+
