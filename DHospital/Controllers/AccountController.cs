@@ -139,7 +139,10 @@ namespace DHospital.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            ApplicationDbContext dbcontext = new ApplicationDbContext();
+            RegisterViewModel registerViewModel = new RegisterViewModel();
+            registerViewModel.User_category=dbcontext.User_Category.ToList();
+            return View(registerViewModel);
         }
 
         //
@@ -151,7 +154,10 @@ namespace DHospital.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email,
+                    Email = model.Email,
+                    FirstName =model.FirstName,
+                    LastName =model.LastName,user_category=model.UserCategory };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
