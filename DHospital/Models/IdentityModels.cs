@@ -14,7 +14,7 @@ namespace DHospital.Models
         public string Mobileno { get; set; }
         public byte[] ProfilePic { get; set; }
         public string Description { get; set; }
-        public int user_category { get; set; }
+     
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -35,9 +35,6 @@ namespace DHospital.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        public DbSet<User_Category> User_Category { get; set; }
-        
+        }   
     }
 }

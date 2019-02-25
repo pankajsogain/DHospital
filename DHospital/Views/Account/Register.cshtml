@@ -29,12 +29,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserCategory, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.UserCategory,new SelectList(Model.User_category,"Id","Name"),"--Select--", new { @class = "form-control" });
-            </div>
-    </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -45,6 +40,12 @@
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+  <div class="form-group">
+        @Html.LabelFor(m=>m.Role, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Role,new SelectList(ViewBag.roles,"Name","Name"),"--Select--" ,new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

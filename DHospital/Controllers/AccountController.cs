@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DHospital.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace DHospital.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext context = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -139,10 +142,8 @@ namespace DHospital.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ApplicationDbContext dbcontext = new ApplicationDbContext();
-            RegisterViewModel registerViewModel = new RegisterViewModel();
-            registerViewModel.User_category=dbcontext.User_Category.ToList();
-            return View(registerViewModel);
+            ViewBag.roles = context.Roles;            
+            return View();
         }
 
         //
@@ -157,8 +158,9 @@ namespace DHospital.Controllers
                 var user = new ApplicationUser { UserName = model.Email,
                     Email = model.Email,
                     FirstName =model.FirstName,
-                    LastName =model.LastName,user_category=model.UserCategory };
+                    LastName =model.LastName};
                 var result = await UserManager.CreateAsync(user, model.Password);
+                UserManager.AddToRole(user.Id, model.Role);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

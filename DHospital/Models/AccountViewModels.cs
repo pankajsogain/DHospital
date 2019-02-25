@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -75,13 +76,7 @@ namespace DHospital.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Required]
-        [Display(Name ="Category")]
-        public int UserCategory { get; set; }
-        public IEnumerable<User_Category> User_category { get; set; }
-
-        
+                
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -92,6 +87,12 @@ namespace DHospital.Models
         [Display(Name = "Confirm password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Role")]
+        public string Role { get; set; }
+
+        public IdentityRole Roles { get; set; }
     }
 
     public class ResetPasswordViewModel
