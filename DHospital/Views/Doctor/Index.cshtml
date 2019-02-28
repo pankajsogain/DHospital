@@ -1,0 +1,58 @@
+﻿@model DHospital.ViewModel.Doctors
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+<div>
+    <h4>Doctors</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor_FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor_FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YOE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YOE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_of_Birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_of_Birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gendar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gendar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditProfile", new { id = Model.Id })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>
