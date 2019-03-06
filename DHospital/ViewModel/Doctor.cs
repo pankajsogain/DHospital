@@ -15,5 +15,6 @@ namespace DHospital.ViewModel
       public string Gendar { get; set;}
         [Key]
         public int Id { get; set;}
+        public byte[] profile_photo { get; set;}
     }
 }

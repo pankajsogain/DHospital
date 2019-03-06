@@ -3,13 +3,70 @@
 @{
     ViewBag.Title = "EditProfile";
 }
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/css/StyleSheet1.css" rel="stylesheet" />
+<script src="~/JavaScript/JavaScript.js"></script>
+<link href="~/css/pikaday.css" rel="stylesheet" />
+<link href="~/css/theme.css" rel="stylesheet" />
+<link href="~/css/site.css" rel="stylesheet" />
+<script src="~/JavaScript/pikaday.js"></script>
 <h2>EditProfile</h2>
 
-@using (Html.BeginForm())
+<script type="text/javascript">
+    $(document).ready(function () {
+        var picker = new Pikaday(
+            {
+                field: document.getElementById('Date_of_Birth'),
+                firstDay: 1,
+                minDate: new Date('2000-01-01'),
+                maxDate: new Date('2020-12-31'),
+                yearRange: [2000, 2020],
+                numberOfMonths: 1,
+                theme: 'dark-theme'
+            });
+        var picker = new Pikaday(
+            {
+                field: document.getElementById('YOE'),
+                firstDay: 1,
+                minDate: new Date('2000-01-01'),
+                maxDate: new Date('2020-12-31'),
+                yearRange: [2000, 2020],
+                numberOfMonths: 1,
+                theme: 'dark-theme'
+            });
+    });
+</script>
+
+@using (Html.BeginForm("EditProfile", "Doctor", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+    <div class="jumbotron">
+
+        <img src="@Url.Action("UserPhotos","Doctor",new
+                 { id=Model.Id})" style="width:150px;height:150px; background: #FFFFFF;
+    margin: auto;
+    -moz-border-radius: 10px;
+    border-radius: 100px;
+    padding: 6px;
+    box-shadow: 0px 0px 20px #888;" />
+        <div class="container">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">
+                                Browse… <input type="file" id="ImageData" name="ImageData" accept=".png,.jpg,.jpeg,.gif,.tif">
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <img id='img-upload' />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="form-horizontal">
         <h4>Doctors</h4>
         <hr />
@@ -54,6 +111,16 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.profile_photo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.profile_photo, new { htmlAttributes = new { @class = "form-control", @type = "File" } })
+                <input type="file" id="ImageData" name="ImageData" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                @Html.ValidationMessageFor(model => model.profile_photo, "", new { @class = "text-danger" })
+            </div*@>
+
+        @*</div>*@
+
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
@@ -65,5 +132,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List","Index", "Doctor",new {id= Model.Id},null)
+    @Html.ActionLink("Back to List", "Index", "Doctor", new { id = Model.Id }, null)
 </div>
